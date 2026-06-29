@@ -31,52 +31,48 @@ channel_keyboard = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-# دستور /start
+# استارت
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "👋 سلام!\n\n"
+        "👋 سلام\n\n"
         "🌹 به ربات فروش VPN خوش اومدی.\n\n"
-        "لطفاً یکی از گزینه‌های زیر را انتخاب کن:",
+        "از منوی زیر یکی از گزینه‌ها را انتخاب کنید.",
         reply_markup=main_keyboard
     )
 
-# مدیریت دکمه‌ها
+# دکمه‌ها
 async def buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
-    # خرید پلن
     if text == "🛒 خرید پلن":
         await update.message.reply_text(
             "🛒 بخش خرید پلن به‌زودی فعال می‌شود."
         )
 
-    # تمدید پلن
     elif text == "🔄 تمدید پلن":
         await update.message.reply_text(
             "🔄 بخش تمدید پلن به‌زودی فعال می‌شود."
         )
 
-    # لیست پلن
     elif text == "📋 لیست پلن":
         await update.message.reply_text(
-            "📦 پلن‌های موجود:\n\n"
+            "📦 پلن‌های موجود\n\n"
             "🔹 اشتراک ۱ ماهه\n"
             "💰 قیمت: ۸۵۰,۰۰۰ تومان"
         )
 
-    # کانال
     elif text == "📢 کانال WireGuard":
         with open("channel.jpg", "rb") as photo:
             await update.message.reply_photo(
                 photo=photo,
                 caption=(
                     "📢 کانال رسمی WireGuard\n\n"
-                    "در کانال ما می‌توانید:\n"
-                    "✅ اطلاعیه‌های مهم\n"
+                    "برای اطلاع از:\n"
                     "✅ آموزش‌های WireGuard\n"
+                    "✅ بروزرسانی‌ها\n"
                     "✅ تخفیف‌های ویژه\n"
-                    "✅ اخبار و بروزرسانی‌ها\n\n"
-                    "👇 برای ورود روی آیدی زیر بزنید."
+                    "✅ اطلاعیه‌های مهم\n\n"
+                    "👇 برای ورود روی دکمه زیر بزنید."
                 ),
                 reply_markup=channel_keyboard
             )
